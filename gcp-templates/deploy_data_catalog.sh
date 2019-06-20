@@ -252,11 +252,25 @@ def generate_config(context):
                             'subscription': distribution['title']
                         }
                 }
-
+            if distribution['format'] == 'mysql-instance':
+                resource_to_append = {
+                    'name': distribution['title'],
+                    'type': 'gcp-types/sqladmin-v1beta4:instances',
+                    'properties': distribution['deploymentProperties']
+                }
+            if distribution['format'] == 'mysql-db':
+                resource_to_append = {
+                    'name': distribution['title'],
+                    'type': 'gcp-types/sqladmin-v1beta4:databases',
+                    'properties': distribution['deploymentProperties'],
+                    'metadata': {
+                        'dependsOn': [distribution['deploymentProperties']['instance']]
+                    }
+                }
 
             if resource_to_append:
                 if 'accessLevel' in dataset:
-                    append_gcp_policy(resource_to_append, distribution['title'], distribution['format'], dataset['accessLevel'], 
+                    append_gcp_policy(resource_to_append, distribution['title'], distribution['format'], dataset['accessLevel'],
                                       context.env['project'], dataset.get('odrlPolicy'))
                 resources.append(resource_to_append)
 
@@ -276,4 +290,3 @@ else
     # Update if deployment exists already
     gcloud deployment-manager deployments update ${deployment_name} --template=${gcp_template} --project=${project_id}
 fi
-
