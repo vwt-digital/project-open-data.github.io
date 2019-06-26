@@ -250,6 +250,7 @@ def generate_config(context):
                         {
                             'topic': '\$(ref.'+find_topic(dataset)+'.name)',
                             'subscription': distribution['title']
+
                         }
                 }
             if distribution['format'] == 'mysql-instance':
