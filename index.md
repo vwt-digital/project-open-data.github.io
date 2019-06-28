@@ -30,7 +30,8 @@ Implementation guidance for open data practices.
 
 3-1 [Documenting APIs](v1.1/api/) - The specific guidance for documenting APIs in the data catalogs.
 
-3-2 [Automated deployment to Google Cloud](gcp-templates/) - Automatically create Google Cloud resources from Project Open Data Schema.   
+3-2 [Automated deloyment to Google Cloud](https://github.com/vwt-digital/dcat-deploy) - Automatically create Google Cloud resources from Project Open Data Schema.   
+Previously, deployment to GCP was part of this project, obsolete pages on [Obsolete version of automated deployment to Google Cloud](gcp-templates/)
 
 ----------------
 
