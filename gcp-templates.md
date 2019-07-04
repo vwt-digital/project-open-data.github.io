@@ -5,6 +5,8 @@ permalink: gcp-templates/
 filename: glossary.md
 ---
 
+# PLEASE NOTE: These pages describe an old version of deploying a data catalog to GCP. Automated deployment of data catalog has moved to its own project: [dcat-deploy](https://github.com/vwt-digital/dcat-deploy).
+
 ## 1. Google Cloud Platform Deployment 
 
 The Google Cloud Platform (GCP) provides the Deployment Manager to deploy resources to the platform. The Project Company Data schema can be used
