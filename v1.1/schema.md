@@ -62,6 +62,7 @@ Field                           | Label                 | Definition    | Requir
 [conformsTo](#conformsTo)       | Schema Version        | URI that identifies the version of the Project Company Data schema being used. | Always 
 [describedBy](#describedBy)     | Data Dictionary       | URL for the [JSON Schema](http://json-schema.org/) file that defines the schema used.  | No
 [dataset](#dataset)             | Dataset               | A container for the array of Dataset objects. See [Dataset Fields](#Dataset) below for details.  | Always
+[backupDestination](#backupDestination) | Backup destination | A storage location to store backups of data described by this catalog | No
 
 
 Dataset Fields
@@ -155,6 +156,7 @@ Additional details for each field are provided here broken down into sections fo
     * {: .field-optional}[@type](#type)
     * {: .field-required}[conformsTo](#conformsTo)
     * {: .field-optional}[describedBy](#describedBy)
+    * {: .field-optional}[backupDestination](#backupDestination)
     * {: .field-required}[dataset](#dataset)
         * {: .field-optional}[@type](#dataset-type)
         * {: .field-required}[accessLevel](#accessLevel)
@@ -238,6 +240,15 @@ Catalog Fields {#Catalog}
 **Accepted Values** | String (URI)
 **Usage Notes** | This is used to identify the schema version using a URI. The URI for version 1.1 of the schema is `https://project-open-data.cio.gov/v1.1/schema`
 **Example** | `{"conformsTo": "https://project-open-data.cio.gov/v1.1/schema"}`
+
+{: .table .table-striped #backupDestination}
+**Field [#](#backupDestination){: .permalink}** | **backupDestination**
+----- | -----
+**Cardinality** | (0,1)
+**Required** | No
+**Accepted Values** | String (URI)
+**Usage Notes** | This is used to identify the storage location where backups of data in this catalog are stored.
+**Example** | `{"backupDestination": "my-storage-bucket"}`
 
 {: .table .table-striped #describedBy}
 **Field [#](#describedBy){: .permalink}** | **describedBy**

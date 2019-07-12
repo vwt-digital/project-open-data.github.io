@@ -33,6 +33,12 @@
         "dcat:Catalog"
       ]
     },
+    "backupDestination": {
+      "description": "Backup storage location where backups of data described by this catalog are stored.",
+      "title": "Backup destination",
+      "type": "string"
+      ]
+    },
     "conformsTo": {
       "description": "Version of Schema",
       "title": "Version of Schema",
