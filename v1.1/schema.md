@@ -249,7 +249,7 @@ Catalog Fields {#Catalog}
 **Required** | Yes, always
 **Accepted Values** | String (URI)
 **Usage Notes** | This is used to identify the topic where the data catalog needs to be published to and the project where the topic can be found.
-**Example** | `{ "publishDataCatalog":{ "topic": "my-topic", "project": "my-project"}}`
+**Example** | `{ "publishDataCatalog":{ "topic": "topic-to-publish-to", "project": "project-with-topic"}}`
 
 {: .table .table-striped #backupDestination}
 **Field [#](#backupDestination){: .permalink}** | **backupDestination**
