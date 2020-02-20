@@ -60,7 +60,7 @@ Field                           | Label                 | Definition    | Requir
 [@id](#id)                      | Metadata Catalog ID   | IRI for the [JSON-LD Node Identifier](http://www.w3.org/TR/json-ld/#node-identifiers) of the Catalog. This should be the URL of the data.json file itself. | No 
 [@type](#type)                  | Metadata Type         | IRI for the [JSON-LD data type](http://www.w3.org/TR/json-ld/#specifying-the-type). This should be `dcat:Catalog` for the Catalog. | No 
 [conformsTo](#conformsTo)       | Schema Version        | URI that identifies the version of the Project Company Data schema being used. | Always 
-[publishDataCatalog](#publishDataCatalog)       | Schema Version        | URI that identifies the topic where the data catalog should be published to. | Always 
+[publishDataCatalog](#publishDataCatalog)       | Schema Version        | Should contain two fields: [topic] URI that identifies the topic where the data catalog should be published to. And [project] URI with the GCP project which contains the topic.| Always 
 [describedBy](#describedBy)     | Data Dictionary       | URL for the [JSON Schema](http://json-schema.org/) file that defines the schema used.  | No
 [dataset](#dataset)             | Dataset               | A container for the array of Dataset objects. See [Dataset Fields](#Dataset) below for details.  | Always
 [backupDestination](#backupDestination) | Backup destination | A storage location to store backups of data described by this catalog | No
