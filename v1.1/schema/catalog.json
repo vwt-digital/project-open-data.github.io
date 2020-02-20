@@ -11,6 +11,7 @@
   },
   "required": [
     "conformsTo",
+    "publishDataCatalog",
     "dataset"
   ],
   "properties": {
@@ -37,7 +38,6 @@
       "description": "Backup storage location where backups of data described by this catalog are stored.",
       "title": "Backup destination",
       "type": "string"
-      ]
     },
     "conformsTo": {
       "description": "Version of Schema",
@@ -45,6 +45,12 @@
       "enum": [
         "https://project-open-data.cio.gov/v1.1/schema"
       ]
+    },
+    "publishDataCatalog": {
+      "description": "Topic where the data catalog is published and its project",
+      "title": "Topic where the data catalog is published and its project",
+      "type": "object",
+      "format": "uri"
     },
     "describedBy": {
       "description": "URL for the JSON Schema file that defines the schema used",

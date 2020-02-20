@@ -1,6 +1,10 @@
 {
   "conformsTo": "https://vwt-digital.github.io/project-company-data.github.io/v1.1/schema",
   "backupDestination": "my-storage-bucket",
+  "publishDataCatalog":{
+    "topic": "topic-to-publish-to",
+    "project": "project-with-topic"
+  },
   "dataset": [
     {
       "accessLevel": "internal",
