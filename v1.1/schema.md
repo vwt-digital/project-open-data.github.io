@@ -39,7 +39,7 @@ Where optional fields are included in a catalog file but are unpopulated, they m
 
 When a record has an **accessURL** or **downloadURL**, they should be contained as objects within a **distribution**. Any object may be described by **title**, **description**, **format**, or **mediaType**, though when an object contains **downloadURL**, it must be accompanied by **mediaType**.  
 
-The Project Company Data schema is case sensitive. The schema uses a camel case convention where the first letter of some words within a field are capitalized (usually all words but the first one). While it may seem subtle which characters are uppercase and lowercase, it is necessary to follow the exact same casing as defined in the schema documented here.  For example: 
+The Project Company Data schema is case sensitive. The schema uses a camel case convention where the first letter of some words within a field are capitalized (usually all words but the first one). While it may seem subtle which characters are uppercase and lowercase, it is necessary to follow the exact same casing as defined in the schema documented here.  For example:
 
 > Correct: `contactPoint`  
 > Incorrect: `ContactPoint`  
@@ -51,14 +51,14 @@ Links to downloadable examples of metadata files developed in this and other for
 
 Catalog Fields
 -------------------------------------------------
-These fields describe the entire Public Data Listing catalog file. Publishers can also use the `describedBy` field to reference the default [JSON Schema](http://json-schema.org/) file used to define the schema (*v1.1/schema/catalog.json*) or they may refer to their own JSON Schema file if they have extended the schema with additional schema definitions. Similarly, `@context` can be used to reference the default [JSON-LD](http://www.w3.org/TR/json-ld) Context used to define the schema (*v1.1/schema/catalog.jsonld*) or publishers can refer to their own if they have extended the schema with additional linked data vocabularies. See the [Catalog section](#Catalog) under *Further Metadata Field Guidance* for more details. 
+These fields describe the entire Public Data Listing catalog file. Publishers can also use the `describedBy` field to reference the default [JSON Schema](http://json-schema.org/) file used to define the schema (*v1.1/schema/catalog.json*) or they may refer to their own JSON Schema file if they have extended the schema with additional schema definitions. Similarly, `@context` can be used to reference the default [JSON-LD](http://www.w3.org/TR/json-ld) Context used to define the schema (*v1.1/schema/catalog.jsonld*) or publishers can refer to their own if they have extended the schema with additional linked data vocabularies. See the [Catalog section](#Catalog) under *Further Metadata Field Guidance* for more details.
 
 {: .table .table-striped}
 Field                           | Label                 | Definition    | Required
 --------------                  | --------------        | --------------| --------------
-[@context](#context)            | Metadata Context      | URL or JSON object for the [JSON-LD Context](http://www.w3.org/TR/json-ld/#the-context) that defines the schema used. | No 
-[@id](#id)                      | Metadata Catalog ID   | IRI for the [JSON-LD Node Identifier](http://www.w3.org/TR/json-ld/#node-identifiers) of the Catalog. This should be the URL of the data.json file itself. | No 
-[@type](#type)                  | Metadata Type         | IRI for the [JSON-LD data type](http://www.w3.org/TR/json-ld/#specifying-the-type). This should be `dcat:Catalog` for the Catalog. | No 
+[@context](#context)            | Metadata Context      | URL or JSON object for the [JSON-LD Context](http://www.w3.org/TR/json-ld/#the-context) that defines the schema used. | No
+[@id](#id)                      | Metadata Catalog ID   | IRI for the [JSON-LD Node Identifier](http://www.w3.org/TR/json-ld/#node-identifiers) of the Catalog. This should be the URL of the data.json file itself. | No
+[@type](#type)                  | Metadata Type         | IRI for the [JSON-LD data type](http://www.w3.org/TR/json-ld/#specifying-the-type). This should be `dcat:Catalog` for the Catalog. | No
 [conformsTo](#conformsTo)       | Schema Version        | URI that identifies the version of the Project Company Data schema being used. | Always
 [publishDataCatalog](#publishDataCatalog)       | Schema Version        | Should contain two fields: [topic](#topic) URI that identifies the topic where the data catalog should be published to. And [project](#project) URI with the project which contains the topic.| Always
 [describedBy](#describedBy)     | Data Dictionary       | URL for the [JSON Schema](http://json-schema.org/) file that defines the schema used.  | No
@@ -68,22 +68,22 @@ Field                           | Label                 | Definition    | Requir
 
 Dataset Fields
 -----------------------------
-See the *[Further Metadata Field Guidance](#further-metadata-field-guidance)* section to learn more about the use of each element, including the range of valid entries where appropriate. 
+See the *[Further Metadata Field Guidance](#further-metadata-field-guidance)* section to learn more about the use of each element, including the range of valid entries where appropriate.
 
 {: .table .table-striped}
 Field                                                      | Label                     | Definition      | Required
 --------------                                             | --------------            | --------------  | --------------
 [@type](#dataset-type)                                     | Metadata Type             | IRI for the [JSON-LD data type](http://www.w3.org/TR/json-ld/#specifying-the-type). This should be `dcat:Dataset` for each Dataset. | No
 [title](#title)                                            | Title                     | Human-readable name of the asset.  Should be in plain English and include sufficient detail to facilitate search and discovery. | Always                
-[description](#description)                                | Description               | Human-readable description (e.g., an abstract) with sufficient detail to enable a user to quickly understand whether the asset is of interest. | Always 
+[description](#description)                                | Description               | Human-readable description (e.g., an abstract) with sufficient detail to enable a user to quickly understand whether the asset is of interest. | Always
 [keyword](#keyword)                                        | Tags                      | Tags (or keywords) help users discover your dataset; please include terms that would be used by technical and non-technical users. | Always              
 [modified](#modified)                                      | Last Update               | Most recent date on which the dataset was changed, updated or modified. | Always                                                                        
 [publisher](#publisher)                                    | Publisher                 | The publishing entity and optionally their parent organization(s). | Always                                                                                                                     
 [contactPoint](#contactPoint)                              | Contact Name and Email    | Contact person's name and email for the asset. | Always                                                                                                           
 [identifier](#identifier)                                  | Unique Identifier         | A unique identifier for the dataset or API as maintained within an Agency catalog or database. | Always                                                 
-[accessLevel](#accessLevel)                                | Public Access Level       | The degree to which this dataset **could** be made publicly-available, *regardless of whether it has been made available*. Choices: public (Data asset is or could be made publicly available to all without restrictions), internal (Data asset is or could be made available internally only), restricted (Data asset is available under certain use restrictions), or confidential (Data asset contains confidential data and is only available to specific people). | Always 
-[license](#license)                                        | License                   | The license or non-license (i.e. Public Domain) status with which the dataset or API has been published.  See [Open Licenses](/open-licenses/) for more information. | If-Applicable 
-[rights](#rights)                                          | Rights                    | This may include information regarding access or restrictions based on privacy, security, or other policies. This should also serve as an explanation for the selected “accessLevel” including instructions for how to access a restricted file, if applicable. Text, 255 characters. | Always 
+[accessLevel](#accessLevel)                                | Public Access Level       | The degree to which this dataset **could** be made publicly-available, *regardless of whether it has been made available*. Choices: public (Data asset is or could be made publicly available to all without restrictions), internal (Data asset is or could be made available internally only), restricted (Data asset is available under certain use restrictions), or confidential (Data asset contains confidential data and is only available to specific people). | Always
+[license](#license)                                        | License                   | The license or non-license (i.e. Public Domain) status with which the dataset or API has been published.  See [Open Licenses](/open-licenses/) for more information. | If-Applicable
+[rights](#rights)                                          | Rights                    | This may include information regarding access or restrictions based on privacy, security, or other policies. This should also serve as an explanation for the selected “accessLevel” including instructions for how to access a restricted file, if applicable. Text, 255 characters. | Always
 [spatial](#spatial)                                        | Spatial                   | The range of spatial applicability of a dataset.  Could include a spatial region like a bounding box or a named place. | If-Applicable                        
 [temporal](#temporal)                                      | Temporal                  | The range of temporal applicability of a dataset (i.e., a start and end date of applicability for the data).  | If-Applicable                                  
 [distribution](#distribution)                              | Distribution              | A container for the array of Distribution objects. See [Dataset Distribution Fields](#dataset-distribution-fields) below for details. | If-Applicable
@@ -94,7 +94,7 @@ Field                                                      | Label              
 [isPartOf](#isPartOf)                                      | Collection                | The collection of which the dataset is a subset.  | No
 [issued](#issued)                                          | Release Date              | Date of formal issuance. | No                                                                                                                      
 [language](#language)                                      | Language                  | The language of the dataset. | No                                                                                                                  
-[landingPage](#landingPage)                                | Homepage URL              | This field is not intended for an company's homepage (e.g. www.mycompany.com), but rather if a dataset has a human-friendly hub or landing page that users can be directed to for all resources tied to the dataset. | No 
+[landingPage](#landingPage)                                | Homepage URL              | This field is not intended for an company's homepage (e.g. www.mycompany.com), but rather if a dataset has a human-friendly hub or landing page that users can be directed to for all resources tied to the dataset. | No
 [references](#references)                                  | Related Documents         | Related documents such as technical information about a dataset, developer documentation, etc. | No                                                                                           
 [theme](#theme)                                            | Category                  | Main thematic category of the dataset.  | No
 [odrlPolicy](@odrlPolicy)                                  | Digital rights policy     | Specifies additional access rights on the dataset that are not covered by the default accessLevel permissions  | No
@@ -113,12 +113,13 @@ Field                                           | Label                 | Defini
 [describedByType](#distribution-describedByType)| Data Dictionary Type  | The machine-readable file format ([IANA Media Type](http://www.iana.org/assignments/media-types) or [MIME Type](http://en.wikipedia.org/wiki/Internet_media_type)) of the distribution's `describedBy` URL. | No
 [description](#distribution-description)        | Description           | Human-readable description of the distribution. | No
 [downloadURL](#distribution-downloadURL)        | Download URL          | URL providing direct access to a downloadable file of a dataset. | If-Applicable
-[format](#distribution-format)                  | Format                | A human-readable description of the file format of a distributioni, also used to determine type of resource for [GCP deployment](../gcp-templates). | No
+[format](#distribution-format)                  | Format                | A human-readable description of the file format of a distribution, also used to determine type of resource for [GCP deployment](../gcp-templates). | No
 [deploymentZone](#distribution-deploymentZone)  | Deployment zone       | The compute zone where this distribution is deployed | No
 [deploymentProperties](#distribution-deploymentProperties)  | Deployment properties       | Additional platform specific properties to specify deployment details (e.g. instance details like sizing and location on a database) | No
+[mirrorOf](#distribution-mirrorOf)  | Mirror of       | Specifies if a distribution is an exact replica of another distribution (e.g. for backup purposes) | No
 [mediaType](#distribution-mediaType)            | Media Type            | The machine-readable file format ([IANA Media Type](http://www.iana.org/assignments/media-types) or [MIME Type](http://en.wikipedia.org/wiki/Internet_media_type)) of the distribution's `downloadURL`. | If-Applicable   
 [title](#distribution-title)                    | Title                 | Human-readable name of the distribution, also defines name of resource for [GCP deployment](../gcp-templates). | No
-                                                                                                                      
+
 
 odlrPolicy Fields
 -------------------------------------------
@@ -140,7 +141,7 @@ Extending the Schema
 
 Further Metadata Field Guidance
 -------------------------------
-Additional details for each field are provided here broken down into sections for the overarching [Catalog](#Catalog), each [dataset](#dataset), and each dataset's [distribution](#distribution). 
+Additional details for each field are provided here broken down into sections for the overarching [Catalog](#Catalog), each [dataset](#dataset), and each dataset's [distribution](#distribution).
 
 
 {: .schema-fields .requirements-key}
@@ -181,6 +182,7 @@ Additional details for each field are provided here broken down into sections fo
             * {: .field-required}[format](#distribution-format)
             * {: .field-optional}[deploymentZone](#distribution-deploymentZone)
             * {: .field-optional}[deploymentProperties](#distribution-deploymentProperties)
+            * {: .field-optional}[mirrorOf](#distribution-mirrorOf)
             * {: .field-required-if-applicable}[mediaType](#distribution-mediaType)
             * {: .field-optional}[title](#distribution-title)
         * {: .field-required}[identifier](#identifier)
@@ -192,7 +194,7 @@ Additional details for each field are provided here broken down into sections fo
         * {: .field-required-if-applicable}[license](#license)
         * {: .field-required}[modified](#modified)
         * {: .field-required}[publisher](#publisher)
-            * {: .field-optional}[@type](#publisher-type) 
+            * {: .field-optional}[@type](#publisher-type)
             * {: .field-required}[name](#publisher-name)
             * {: .field-optional}[subOrganizationOf](#publisher-subOrganizationOf)
         * {: .field-optional}[references](#references)
@@ -266,7 +268,7 @@ Catalog Fields {#Catalog}
 **Cardinality** | (0,1)
 **Required** | No
 **Accepted Values** | String (URL)
-**Usage Notes** | This is used to specify a [JSON Schema](http://json-schema.org/) file that defines all fields. By default, it is recommended that the canonical JSON Schema file is referenced (https://project-open-data.cio.gov/v1.1/schema/catalog.json) but if the schema had been extended, publishers may reference a file that defines those extensions. 
+**Usage Notes** | This is used to specify a [JSON Schema](http://json-schema.org/) file that defines all fields. By default, it is recommended that the canonical JSON Schema file is referenced (https://project-open-data.cio.gov/v1.1/schema/catalog.json) but if the schema had been extended, publishers may reference a file that defines those extensions.
 **Example** | `{"describedBy": "https://project-open-data.cio.gov/v1.1/schema/catalog.json"}`
 
 {: .table .table-striped #dataset}
@@ -395,10 +397,10 @@ Dataset Fields {#Dataset}
 ----- | -----
 **Cardinality** | (0,n)
 **Required** | Yes, if the dataset has an `accessURL` or `downloadURL`.  
-**Accepted Values** | Array of Objects 
+**Accepted Values** | Array of Objects
 **Usage Notes** | This is a container for one or multiple `distribution` objects which group together the fields: `accessURL`, `conformsTo`, `downloadURL`, `describedBy`, `describedByType`, `description`, `format`, `mediaType`, and `title`.  
 **Example** | See below
- 
+
 ~~~
 "distribution": [
                  {
@@ -408,7 +410,7 @@ Dataset Fields {#Dataset}
                      "format": "CSV",
                      "mediaType": "text/csv",
                      "title": "listofvegetables.csv"
-                 }, 
+                 },
                  {
                      "@type": "dcat:Distribution",
                      "conformsTo": "http://www.agency.gov/vegetables-data-standard/",
@@ -480,7 +482,7 @@ Dataset Fields {#Dataset}
 **Cardinality** | (0,1)
 **Required** | No
 **Accepted Values** | String (URL)
-**Usage Notes** | This is used to specify a data dictionary or schema that defines fields or column headings in the distribution. If this is a machine readable file the media type should be specified with `describedByType` - otherwise it's assumed to be a human readable HTML webpage. 
+**Usage Notes** | This is used to specify a data dictionary or schema that defines fields or column headings in the distribution. If this is a machine readable file the media type should be specified with `describedByType` - otherwise it's assumed to be a human readable HTML webpage.
 **Example** | `{"describedBy": "http://www.agency.gov/vegetables/schema.json"}`
 
 {: .table .table-striped .child-field #distribution-describedByType}
@@ -489,7 +491,7 @@ Dataset Fields {#Dataset}
 **Cardinality** | (0,1)
 **Required** | No
 **Accepted Values** | String ([IANA Media Type](http://www.iana.org/assignments/media-types))
-**Usage Notes** | This is used to identify the media type ([IANA Media Type](http://www.iana.org/assignments/media-types) also known as [MIME Type](http://en.wikipedia.org/wiki/Internet_media_type)) of the URL used for the distribution's `describedBy` field. This is especially important if `describedBy` is a machine readable file. 
+**Usage Notes** | This is used to identify the media type ([IANA Media Type](http://www.iana.org/assignments/media-types) also known as [MIME Type](http://en.wikipedia.org/wiki/Internet_media_type)) of the URL used for the distribution's `describedBy` field. This is especially important if `describedBy` is a machine readable file.
 **Example** | `{"describedByType": "application/schema+json"}`
 
 {: .table .table-striped .child-field #distribution-description}
@@ -498,8 +500,8 @@ Dataset Fields {#Dataset}
 **Cardinality** | (0,1)
 **Required** | No
 **Accepted Values** | String
-**Usage Notes** | This should be a human-readable description of the distribution. 
-**Example** | `{"description":"Vegetable data as a zipped CSV file with attached data dictionary"}`
+**Usage Notes** | This should be a human-readable description of the distribution.
+**Example** | `{"description": "Vegetable data as a zipped CSV file with attached data dictionary"}`
 
 {: .table .table-striped .child-field #distribution-format}
 **Field [#](#distribution-format){: .permalink}** | **distribution &rarr; format**
@@ -508,7 +510,7 @@ Dataset Fields {#Dataset}
 **Required** | No
 **Accepted Values** | String
 **Usage Notes** | This should be a human-readable description of the file format of the dataset, that provides useful information that might not be apparent from `mediaType`.  Note that `API` should always be used to distinguish web APIs. Furthermore, this value is used to determine the type of resource to deploy in when using [GCP templates](../../gcp-templates/).   
-**Example** | `{"format":"CSV"}`
+**Example** | `{"format": "blob-storage"}`
 
 {: .table .table-striped .child-field #distribution-deploymentZone}
 **Field [#](#distribution-deploymentZone){: .permalink}** | **distribution &rarr; deploymentZone**
@@ -517,7 +519,7 @@ Dataset Fields {#Dataset}
 **Required** | No
 **Accepted Values** | String
 **Usage Notes** | This specifies the compute zone where this distribution is deployed, used for [GCP templates](../../gcp-templates/).   
-**Example** | `{"deploymentZone":"europe-west1"}`
+**Example** | `{"deploymentZone": "europe-west1"}`
 
 {: .table .table-striped .child-field #distribution-deploymentProperties}
 **Field [#](#distribution-deploymentProperties){: .permalink}** | **distribution &rarr; deploymentProperties**
@@ -526,7 +528,16 @@ Dataset Fields {#Dataset}
 **Required** | No
 **Accepted Values** | Object
 **Usage Notes** | Additional platform specific properties to specify deployment details (e.g. instance details like sizing and location on a database).
-**Example** | `{"deploymentZone":{"location":"europe-west1","tier":"db-f1-micro"}}`
+**Example** | `{"deploymentZone": {"location": "europe-west1", "tier": "db-f1-micro"}}`
+
+{: .table .table-striped .child-field #distribution-mirrorOf}
+**Field [#](#distribution-mirrorOf){: .permalink}** | **distribution &rarr; mirrorOf**
+----- | -----
+**Cardinality** | (0,1)
+**Required** | No
+**Accepted Values** | String
+**Usage Notes** | Specifies if a distribution is an exact replica of another distribution (e.g. for backup purposes).
+**Example** | `{"mirrorOf": "my-bucket"}`
 
 {: .table .table-striped .child-field #distribution-mediaType}
 **Field [#](#distribution-mediaType){: .permalink}** | **distribution &rarr; mediaType**
@@ -535,7 +546,7 @@ Dataset Fields {#Dataset}
 **Required** | Yes, if the file is available for public download.
 **Accepted Values** | String ([IANA Media Type](http://www.iana.org/assignments/media-types))
 **Usage Notes** | This must describe the exact files available at `downloadURL` using a media type ([IANA Media Type](http://www.iana.org/assignments/media-types) also known as [MIME Type](http://en.wikipedia.org/wiki/Internet_media_type)). For common Microsoft Office files, see [Office Open XML MIME types](http://blogs.msdn.com/b/vsofficedeveloper/archive/2008/05/08/office-2007-open-xml-mime-types.aspx)
-**Example** | `{"mediaType":"text/csv"}`
+**Example** | `{"mediaType": "text/csv"}`
 
 {: .table .table-striped .child-field #distribution-title}
 **Field [#](#distribution-title){: .permalink}** | **distribution &rarr; title**
@@ -544,7 +555,7 @@ Dataset Fields {#Dataset}
 **Required**    | No
 **Accepted Values** | String
 **Usage Notes** | This should be a useful title for the distribution.  Acronyms should be avoided. This field is used to determine the name of the resource when using [GCP templates](../../gcp-templates/).
-**Example**     | `{"title":"listofvegetables.csv"}`
+**Example**     | `{"title": "listofvegetables.csv"}`
 
 
 {: .table .table-striped #identifier}
@@ -554,7 +565,7 @@ Dataset Fields {#Dataset}
 **Required** | Yes, always
 **Accepted Values** | String
 **Usage Notes** | This field allows third parties to maintain a consistent record for datasets even if title or URLs are updated. Agencies may integrate an existing system for maintaining unique identifiers. Each identifier **must** be unique across the agency's catalog and remain fixed. It is **highly recommended** that a [URI (preferably an HTTP URL)](http://tools.ietf.org/html/rfc3986#section-1.1.3) be used to provide a globally unique identifier. Identifier URLs should be designed and maintained to persist indefinitely regardless of whether the URL of the resource itself changes.
-**Example** |  `{"identifier":"http://dx.doi.org/10.7927/H4PZ56R2"}`
+**Example** |  `{"identifier": "http://dx.doi.org/10.7927/H4PZ56R2"}`
 
 {: .table .table-striped #isPartOf}
 **Field [#](#isPartOf){: .permalink}** | **isPartOf**
@@ -563,7 +574,7 @@ Dataset Fields {#Dataset}
 **Required** | No
 **Accepted Values** | String
 **Usage Notes** | This field allows the grouping of multiple datasets into a "collection".  This field should be employed by the individual datasets that together make up a collection.  The value for this field should match the `identifier` of the parent dataset.  
-**Example** |  `{"isPartOf":"http://dx.doi.org/10.7927/H4PZ56R2"}`
+**Example** |  `{"isPartOf": "http://dx.doi.org/10.7927/H4PZ56R2"}`
 
 {: .table .table-striped #issued}
 **Field [#](#issued){: .permalink}** | **issued**
@@ -571,8 +582,8 @@ Dataset Fields {#Dataset}
 **Cardinality** | (0,1)
 **Required** | No
 **Accepted Values** | ISO 8601 Date
-**Usage Notes** | Dates should be [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) of least resolution. In other words, as much of YYYY-MM-DDThh:mm:ss.sTZD as is relevant to this dataset. 
-**Example** |  `{"issued":"2001-01-15"}`
+**Usage Notes** | Dates should be [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) of least resolution. In other words, as much of YYYY-MM-DDThh:mm:ss.sTZD as is relevant to this dataset.
+**Example** |  `{"issued": "2001-01-15"}`
 
 {: .table .table-striped #keyword}
 **Field [#](#keyword){: .permalink}** | **keyword**
@@ -581,7 +592,7 @@ Dataset Fields {#Dataset}
 **Required** | Yes, always
 **Accepted Values** | Array of strings
 **Usage Notes** | Surround each keyword with quotes. Separate keywords with commas.  Avoid duplicate keywords in the same record.  
-**Example** | `{"keyword":["vegetables","veggies","greens","leafy","spinach","kale","nutrition"]}`
+**Example** | `{"keyword" :["vegetables", "veggies", "greens", "leafy", "spinach", "kale", "nutrition"]}`
 
 {: .table .table-striped #landingPage}
 **Field [#](#landingPage){: .permalink}** | **landingPage**
@@ -590,7 +601,7 @@ Dataset Fields {#Dataset}
 **Required** | No
 **Accepted Values** | String (URL)
 **Usage Notes** | This field is not intended for an agency's homepage (e.g. www.agency.gov), but rather if a dataset has a human-friendly hub or landing page that users can be directed to for all resources tied to the dataset.  
-**Example** |  `{"landingPage":"http://www.agency.gov/vegetables"}`
+**Example** |  `{"landingPage": "http://www.agency.gov/vegetables"}`
 
 {: .table .table-striped #language}
 **Field [#](#language){: .permalink}** | **language**
@@ -599,7 +610,7 @@ Dataset Fields {#Dataset}
 **Required** | No
 **Accepted Values** | Array of strings
 **Usage Notes** | This should adhere to the [RFC 5646](http://tools.ietf.org/html/rfc5646) standard. This [language subtag lookup](http://rishida.net/utils/subtags/) provides a good tool for checking and verifying language codes. A language tag is comprised of either one or two parts, the language subtag (such as en for English, sp for Spanish, wo for Wolof) and the regional subtag (such as US for United States, GB for Great Britain, MX for Mexico), separated by a hyphen. Regional subtags should only be provided when needed to distinguish a language tag from another one (such as American vs. British English).
-**Example** |  `{"language":["en-US"]}` or if multiple languages, `{"language":["es-MX","wo","nv","en-US"]}` 
+**Example** |  `{"language": ["en-US"]}` or if multiple languages, `{"language": ["es-MX", "wo", "nv", "en-US"]}`
 
 {: .table .table-striped #license}
 **Field [#](#license){: .permalink}** | **license**
@@ -608,7 +619,7 @@ Dataset Fields {#Dataset}
 **Required** | Yes, if applicable
 **Accepted Values** | String (URL)
 **Usage Notes** | See [list of license-free declarations and licenses](/open-licenses/).
-**Example** |  `{"license":"http://creativecommons.org/publicdomain/zero/1.0/"}`
+**Example** |  `{"license": "http://creativecommons.org/publicdomain/zero/1.0/"}`
 
 {: .table .table-striped #modified}
 **Field [#](#modified){: .permalink}** | **modified**
@@ -617,7 +628,7 @@ Dataset Fields {#Dataset}
 **Required** | Yes, always
 **Accepted Values** | ISO 8601 Date
 **Usage Notes** | Dates should be [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) of highest resolution. In other words, as much of YYYY-MM-DDThh:mm:ss.sTZD as is relevant to this dataset. If there is a need to reflect that the dataset is continually updated, ISO 8601 formatting can account for this [with repeating intervals](http://en.wikipedia.org/wiki/ISO_8601#Time_intervals). For instance, `R/P1D` for daily, `R/P2W` for every two weeks, and `R/PT5M` for every five minutes.
-+**Example** | `{"modified":"2012-01-15"}` or `{"modified":"R/P1D"}`
++**Example** | `{"modified": "2012-01-15"}` or `{"modified": "R/P1D"}`
 
 {: .table .table-striped #odrlPolicy-permission}
 **Field [#](#odrlPolicy-permission){: .permalink}** | **odrlPolicy &rarr; permission**
@@ -662,7 +673,7 @@ Dataset Fields {#Dataset}
 **Required** | No
 **Accepted Values** | String
 **Usage Notes** | Use to link a given dataset with its related IT Unique Investment Identifier, which can often be found in Exhibit 53 documents.
-**Example** |  `{"primaryITInvestmentUII":"023-000000001"}`
+**Example** |  `{"primaryITInvestmentUII": "023-000000001"}`
 
 {: .table .table-striped #publisher}
 **Field [#](#publisher){: .permalink}** | **publisher**
@@ -670,9 +681,9 @@ Dataset Fields {#Dataset}
 **Cardinality** | (1,1)
 **Required** | Yes, always
 **Accepted Values** | Object
-**Usage Notes** | This is a container for a `publisher` object which groups together the fields: `name` and `subOrganization`. The `subOrganization` field can also contain a `publisher` object which allows one to describe an organization's hierarchy.  Where greater specificity is desired, include as many levels of publisher as is useful, in ascending order, using the below format. 
+**Usage Notes** | This is a container for a `publisher` object which groups together the fields: `name` and `subOrganization`. The `subOrganization` field can also contain a `publisher` object which allows one to describe an organization's hierarchy.  Where greater specificity is desired, include as many levels of publisher as is useful, in ascending order, using the below format.
 **Example** | See below
- 
+
 ~~~
 "publisher": {
   "@type": "org:Organization",
@@ -735,8 +746,8 @@ Dataset Fields {#Dataset}
 **Cardinality** | (0,1)
 **Required** | Yes
 **Accepted Values** | String
-**Usage Notes** | This should include information regarding access or restrictions based on privacy, security, or other policies. This should also serve as an explanation for the selected “accessLevel”. 
-**Example** | `{"rights":"This dataset contains Personally Identifiable Information and access is therefore restricted."}`
+**Usage Notes** | This should include information regarding access or restrictions based on privacy, security, or other policies. This should also serve as an explanation for the selected “accessLevel”.
+**Example** | `{"rights": "This dataset contains Personally Identifiable Information and access is therefore restricted."}`
 
 
 {: .table .table-striped #spatial}
@@ -755,7 +766,7 @@ Dataset Fields {#Dataset}
 **Required** | Yes, if applicable
 **Accepted Values** | ISO 8601 Date
 **Usage Notes** | This field should contain an interval of time defined by the start and end dates for which the dataset is applicable.  Dates should be formatted as pairs of {start datetime/end datetime} in the [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format. ISO 8601 specifies that datetimes can be formatted in a number of ways, including a simple four-digit year (eg. 2013) to a much more specific YYYY-MM-DDTHH:MM:SSZ, where the T specifies a seperator between the date and time and time is expressed in 24 hour notation in the UTC (Zulu) time zone. (e.g., 2011-02-14T12:00:00Z/2013-07-04T19:34:00Z). Use a solidus ("/") to separate start and end times.  If there is a need to define the start or end of applicability using a duration rather than a date, ISO 8601 formatting can account for this [with duration based intervals](http://en.wikipedia.org/wiki/ISO_8601#Time_intervals).  For instance, applicability starting in January 2010 and continuing for one month could be represented as `2010-01/P1M` or `2010-01/2010-02`. However, when possible, full dates are preferred for both start and end times.  
-**Example** |  `{"temporal":"2000-01-15T00:45:00Z/2010-01-15T00:06:00Z"}`  or `{"temporal":"2000-01-15T00:45:00Z/P1W"}` 
+**Example** |  `{"temporal":"2000-01-15T00:45:00Z/2010-01-15T00:06:00Z"}`  or `{"temporal":"2000-01-15T00:45:00Z/P1W"}`
 
 {: .table .table-striped #theme}
 **Field [#](#theme){: .permalink}** | **theme**
@@ -764,7 +775,7 @@ Dataset Fields {#Dataset}
 **Required** | No
 **Accepted Values** | Array of strings
 **Usage Notes** | Separate multiple categories with a comma. Could include [ISO Topic Categories](http://www.isotopicmaps.org/).  
-**Examples** |  `{"theme":["vegetables"]}` or if multiple categories, `{"theme":["vegetables","produce"]}`
+**Examples** |  `{"theme": ["vegetables"]}` or if multiple categories, `{"theme": ["vegetables","produce"]}`
 
 {: .table .table-striped #title}
 **Field [#](#title){: .permalink}** | **title**
@@ -773,7 +784,7 @@ Dataset Fields {#Dataset}
 **Required**    | Yes, always
 **Accepted Values** | String
 **Usage Notes** | Acronyms should be avoided.
-**Example**     | `{"title":"Types of Vegetables"}`
+**Example**     | `{"title": "Types of Vegetables"}`
 
 {: .table .table-striped #odrlPolicy-uid}
 **Field [#](#odrlPolicy-uid){: .permalink}** | **odrlPolicy &rarr; uid**
@@ -782,7 +793,7 @@ Dataset Fields {#Dataset}
 **Required**    | Yes, always
 **Accepted Values** | String
 **Usage Notes** | URI of this policy, see [Unique identifier](https://www.w3.org/TR/odrl-vocab/#term-uid).
-**Example**     | `{"uid":"my-company-policies:100"}`
+**Example**     | `{"uid": "my-company-policies:100"}`
 
 
 Rationale for Metadata Nomenclature
