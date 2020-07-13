@@ -61,7 +61,7 @@ Field                           | Label                 | Definition    | Requir
 [@type](#type)                  | Metadata Type         | IRI for the [JSON-LD data type](http://www.w3.org/TR/json-ld/#specifying-the-type). This should be `dcat:Catalog` for the Catalog. | No 
 [conformsTo](#conformsTo)       | Schema Version        | URI that identifies the version of the Project Company Data schema being used. | Always
 [publishDataCatalog](#publishDataCatalog)       | Schema Version        | Should contain two fields: [topic](#topic) URI that identifies the topic where the data catalog should be published to. And [project](#project) URI with the project which contains the topic.| Always
-[describedBy](#describedBy)     | Data Dictionary       | URL for the [JSON Schema](http://json-schema.org/) file that defines the schema used.  | No
+[describedBy](#describedBy)     | Data Dictionary       | URI for the [JSON Schema](http://json-schema.org/) file that defines the schema used.  | No
 [dataset](#dataset)             | Dataset               | A container for the array of Dataset objects. See [Dataset Fields](#Dataset) below for details.  | Always
 [backupDestination](#backupDestination) | Backup destination | A storage location to store backups of data described by this catalog | No
 
@@ -89,7 +89,7 @@ Field                                                      | Label              
 [distribution](#distribution)                              | Distribution              | A container for the array of Distribution objects. See [Dataset Distribution Fields](#dataset-distribution-fields) below for details. | If-Applicable
 [accrualPeriodicity](#accrualPeriodicity)                  | Frequency                 | The frequency with which dataset is published.   | No                                                                                                  
 [conformsTo](#dataset-conformsTo)                          | Data Standard             | URI used to identify a standardized specification the dataset conforms to. | No
-[describedBy](#dataset-describedBy)                        | Data Dictionary           | URL to the data dictionary for the dataset.  Note that documentation other than a data dictionary can be referenced using Related Documents (`references`). | No              
+[describedBy](#dataset-describedBy)                        | Data Dictionary           | URI to the data dictionary for the dataset.  Note that documentation other than a data dictionary can be referenced using Related Documents (`references`). | No
 [describedByType](#dataset-describedByType)                | Data Dictionary Type      | The machine-readable file format ([IANA Media Type](http://www.iana.org/assignments/media-types) also known as [MIME Type](http://en.wikipedia.org/wiki/Internet_media_type)) of the dataset's Data Dictionary (`describedBy`). | No
 [isPartOf](#isPartOf)                                      | Collection                | The collection of which the dataset is a subset.  | No
 [issued](#issued)                                          | Release Date              | Date of formal issuance. | No                                                                                                                      
@@ -109,8 +109,8 @@ Field                                           | Label                 | Defini
 [@type](#distribution-type)                     | Metadata Type         | IRI for the [JSON-LD data type](http://www.w3.org/TR/json-ld/#specifying-the-type). This should be `dcat:Distribution` for each Distribution. | No
 [accessURL](#distribution-accessURL)            | Access URL            | URL providing indirect access to a dataset, for example via API or a graphical interface. | If-Applicable
 [conformsTo](#distribution-conformsTo)          | Data Standard         | URI used to identify a standardized specification the distribution conforms to. | No
-[describedBy](#distribution-describedBy)        | Data Dictionary       | URL to the data dictionary for the distribution found at the `downloadURL`.  Note that documentation other than a data dictionary can be referenced using Related Documents as shown in the expanded fields. | No             
-[describedByType](#distribution-describedByType)| Data Dictionary Type  | The machine-readable file format ([IANA Media Type](http://www.iana.org/assignments/media-types) or [MIME Type](http://en.wikipedia.org/wiki/Internet_media_type)) of the distribution's `describedBy` URL. | No
+[describedBy](#distribution-describedBy)        | Data Dictionary       | URI to the data dictionary for the distribution found at the `downloadURL`.  Note that documentation other than a data dictionary can be referenced using Related Documents as shown in the expanded fields. | No
+[describedByType](#distribution-describedByType)| Data Dictionary Type  | The machine-readable file format ([IANA Media Type](http://www.iana.org/assignments/media-types) or [MIME Type](http://en.wikipedia.org/wiki/Internet_media_type)) of the distribution's `describedBy` URI. | No
 [description](#distribution-description)        | Description           | Human-readable description of the distribution. | No
 [downloadURL](#distribution-downloadURL)        | Download URL          | URL providing direct access to a downloadable file of a dataset. | If-Applicable
 [format](#distribution-format)                  | Format                | A human-readable description of the file format of a distributioni, also used to determine type of resource for [GCP deployment](../gcp-templates). | No
@@ -265,7 +265,7 @@ Catalog Fields {#Catalog}
 ----- | -----
 **Cardinality** | (0,1)
 **Required** | No
-**Accepted Values** | String (URL)
+**Accepted Values** | String (URI)
 **Usage Notes** | This is used to specify a [JSON Schema](http://json-schema.org/) file that defines all fields. By default, it is recommended that the canonical JSON Schema file is referenced (https://project-open-data.cio.gov/v1.1/schema/catalog.json) but if the schema had been extended, publishers may reference a file that defines those extensions. 
 **Example** | `{"describedBy": "https://project-open-data.cio.gov/v1.1/schema/catalog.json"}`
 
@@ -368,7 +368,7 @@ Dataset Fields {#Dataset}
 ----- | -----
 **Cardinality** | (0,1)
 **Required** | No
-**Accepted Values** | String (URL)
+**Accepted Values** | String (URI)
 **Usage Notes** | This is used to specify a data dictionary or schema that defines fields or column headings in the dataset. If this is a machine readable file, it's recommended to be specified with [describedBy](#distribution-describedBy) at the distribution level along with the associated `describedByType`. At the dataset level it's assumed to be a human readable HTML webpage or PDF document. Documentation that is not specifically a data dictionary belongs in "references"
 **Example** | `{"describedBy": "http://www.agency.gov/vegetables/definitions.pdf"}`
 
@@ -378,7 +378,7 @@ Dataset Fields {#Dataset}
 **Cardinality** | (0,1)
 **Required** | No
 **Accepted Values** | String ([IANA Media Type](http://www.iana.org/assignments/media-types))
-**Usage Notes** | This is used to identify the media type ([IANA Media Type](http://www.iana.org/assignments/media-types) also known as [MIME Type](http://en.wikipedia.org/wiki/Internet_media_type)) of the URL used for the dataset's `describedBy` field. This should be specified if `describedBy` is not an HTML webpage.
+**Usage Notes** | This is used to identify the media type ([IANA Media Type](http://www.iana.org/assignments/media-types) also known as [MIME Type](http://en.wikipedia.org/wiki/Internet_media_type)) of the URI used for the dataset's `describedBy` field. This should be specified if `describedBy` is not an HTML webpage.
 **Example** | `{"describedByType": "application/pdf"}`
 
 {: .table .table-striped #description}
@@ -479,7 +479,7 @@ Dataset Fields {#Dataset}
 ----- | -----
 **Cardinality** | (0,1)
 **Required** | No
-**Accepted Values** | String (URL)
+**Accepted Values** | String (URI)
 **Usage Notes** | This is used to specify a data dictionary or schema that defines fields or column headings in the distribution. If this is a machine readable file the media type should be specified with `describedByType` - otherwise it's assumed to be a human readable HTML webpage. 
 **Example** | `{"describedBy": "http://www.agency.gov/vegetables/schema.json"}`
 
@@ -489,7 +489,7 @@ Dataset Fields {#Dataset}
 **Cardinality** | (0,1)
 **Required** | No
 **Accepted Values** | String ([IANA Media Type](http://www.iana.org/assignments/media-types))
-**Usage Notes** | This is used to identify the media type ([IANA Media Type](http://www.iana.org/assignments/media-types) also known as [MIME Type](http://en.wikipedia.org/wiki/Internet_media_type)) of the URL used for the distribution's `describedBy` field. This is especially important if `describedBy` is a machine readable file. 
+**Usage Notes** | This is used to identify the media type ([IANA Media Type](http://www.iana.org/assignments/media-types) also known as [MIME Type](http://en.wikipedia.org/wiki/Internet_media_type)) of the URI used for the distribution's `describedBy` field. This is especially important if `describedBy` is a machine readable file.
 **Example** | `{"describedByType": "application/schema+json"}`
 
 {: .table .table-striped .child-field #distribution-description}

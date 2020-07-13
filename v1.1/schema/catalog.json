@@ -47,10 +47,23 @@
       ]
     },
     "publishDataCatalog": {
-      "description": "Topic where the data catalog is published and its project",
-      "title": "Topic where the data catalog is published and its project",
       "type": "object",
-      "format": "uri"
+      "properties": {
+        "topic":{
+          "description": "Topic where the data catalog is published",
+          "title": "Topic",
+          "type": "string"
+        },
+        "project":{
+          "description": "Project where topic is placed",
+          "title": "Project",
+          "type": "string"
+        }
+      },
+      "required": [
+        "topic",
+        "project"
+      ]
     },
     "describedBy": {
       "description": "URL for the JSON Schema file that defines the schema used",
