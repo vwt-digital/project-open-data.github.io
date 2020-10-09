@@ -97,7 +97,7 @@ Field                                                      | Label              
 [landingPage](#landingPage)                                | Homepage URL              | This field is not intended for an company's homepage (e.g. www.mycompany.com), but rather if a dataset has a human-friendly hub or landing page that users can be directed to for all resources tied to the dataset. | No 
 [references](#references)                                  | Related Documents         | Related documents such as technical information about a dataset, developer documentation, etc. | No                                                                                           
 [theme](#theme)                                            | Category                  | Main thematic category of the dataset.  | No
-[odrlPolicy](@odrlPolicy)                                  | Digital rights policy     | Specifies additional access rights on the dataset that are not covered by the default accessLevel permissions  | No
+[odrlPolicy](#odrlPolicy)                                  | Digital rights policy     | Specifies additional access rights on the dataset that are not covered by the default accessLevel permissions  | No
 
 Dataset Distribution Fields
 -------------------------------------------
@@ -124,7 +124,7 @@ odlrPolicy Fields
 -------------------------------------------
 Within a dataset, **odrlPolicy** is used to specify additional permissions on the dataset that are not covered by the default permissions implied from [accessLevel](#accessLevel). The additional permissions are expressed using the Open Digital Rights Language (ODRL) Information Model](https://www.w3.org/TR/odrl-model/).
 
-{: .table .table-striped}
+{: .table .table-striped #odrlPolicy}
 Field                                           | Label                 | Definition     | Required
 --------------                                  | --------------        | -------------- | --------------                                                                                                                      
 [uid](#odrlPolicy-uid)                     | URI of this policy         | URI of this ODRL policy, see [Policy class](https://www.w3.org/TR/odrl-model/#policy) | Yes
