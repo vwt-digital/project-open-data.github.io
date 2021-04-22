@@ -82,6 +82,7 @@ Field                                                      | Label              
 [contactPoint](#contactPoint)                              | Contact Name and Email    | Contact person's name and email for the asset. | Always                                                                                                           
 [identifier](#identifier)                                  | Unique Identifier         | A unique identifier for the dataset or API as maintained within an Agency catalog or database. | Always                                                 
 [accessLevel](#accessLevel)                                | Public Access Level       | The degree to which this dataset **could** be made publicly-available, *regardless of whether it has been made available*. Choices: public (Data asset is or could be made publicly available to all without restrictions), internal (Data asset is or could be made available internally only), restricted (Data asset is available under certain use restrictions), or confidential (Data asset contains confidential data and is only available to specific people). | Always 
+[qualifiedRelation](#qualifiedRelation)                    | Qualified Relation        | Link to a description of a relationship with another resource as described by [DCAT](https://www.w3.org/TR/vocab-dcat/#Property:resource_qualified_relation)| Always
 [license](#license)                                        | License                   | The license or non-license (i.e. Public Domain) status with which the dataset or API has been published.  See [Open Licenses](/open-licenses/) for more information. | If-Applicable 
 [rights](#rights)                                          | Rights                    | This may include information regarding access or restrictions based on privacy, security, or other policies. This should also serve as an explanation for the selected “accessLevel” including instructions for how to access a restricted file, if applicable. Text, 255 characters. | Always 
 [spatial](#spatial)                                        | Spatial                   | The range of spatial applicability of a dataset.  Could include a spatial region like a bounding box or a named place. | If-Applicable                        
@@ -108,6 +109,7 @@ Field                                           | Label                 | Defini
 --------------                                  | --------------        | -------------- | --------------                                                                                                                      
 [@type](#distribution-type)                     | Metadata Type         | IRI for the [JSON-LD data type](http://www.w3.org/TR/json-ld/#specifying-the-type). This should be `dcat:Distribution` for each Distribution. | No
 [accessURL](#distribution-accessURL)            | Access URL            | URL providing indirect access to a dataset, for example via API or a graphical interface. | If-Applicable
+[qualifiedRelation](#distribution-qualifiedRelation)| Qualified Relation | Link to a description of a relationship with another resource as described by [DCAT](https://www.w3.org/TR/vocab-dcat/#Property:resource_qualified_relation) | Always
 [conformsTo](#distribution-conformsTo)          | Data Standard         | URI used to identify a standardized specification the distribution conforms to. | No
 [describedBy](#distribution-describedBy)        | Data Dictionary       | URI to the data dictionary for the distribution found at the `downloadURL`.  Note that documentation other than a data dictionary can be referenced using Related Documents as shown in the expanded fields. | No
 [describedByType](#distribution-describedByType)| Data Dictionary Type  | The machine-readable file format ([IANA Media Type](http://www.iana.org/assignments/media-types) or [MIME Type](http://en.wikipedia.org/wiki/Internet_media_type)) of the distribution's `describedBy` URI. | No
@@ -163,6 +165,9 @@ Additional details for each field are provided here broken down into sections fo
         * {: .field-required}[accessLevel](#accessLevel)
         * {: .field-optional}[accrualPeriodicity](#accrualPeriodicity)
         * {: .field-optional}[conformsTo](#dataset-conformsTo)
+        * {: .field-required}[qualifiedRelation](#qualifiedRelation)
+            * {: .field-required}[relation](#qualifiedRelation-relation)
+            * {: .field-required}[hadRole](#qualifiedRelation-hadRole)
         * {: .field-required}[contactPoint](#contactPoint)
             * {: .field-optional}[@type](#contactPoint-type)    
             * {: .field-required}[fn](#contactPoint-fn)
@@ -173,6 +178,9 @@ Additional details for each field are provided here broken down into sections fo
         * {: .field-required-if-applicable}[distribution](#distribution)
             * {: .field-optional}[@type](#distribution-type)    
             * {: .field-optional}[accessURL](#distribution-accessURL)
+            * {: .field-required}[qualifiedRelation](#distribution-qualifiedRelation)
+                * {: .field-required}[relation](#distribution-qualifiedRelation-relation)
+                * {: .field-required}[hadRole](#distribution-qualifiedRelation-hadRole)
             * {: .field-optional}[conformsTo](#distribution-conformsTo)
             * {: .field-required-if-applicable}[downloadURL](#distribution-downloadURL)
             * {: .field-optional}[describedBy](#distribution-describedBy)
@@ -318,6 +326,41 @@ Dataset Fields {#Dataset}
 **Usage Notes** | This is used to identify a standardized specification the dataset conforms to. If this is a technical specification associated with a particular serialization of a distribution, this should be specified with [conformsTo](#distribution-conformsTo) at the distribution level. It's recommended that this be a URI that serves as a unique identifier for the standard. The URI may or may not also be a URL that provides documentation of the specification.
 **Example** | `{"conformsTo": "http://www.agency.gov/common-vegetable-analysis-model/"}`
 
+{: .table .table-striped #qualifiedRelation}
+**Field [#](#qualifiedRelation){: .permalink}** | **qualifiedRelation**
+----- | -----
+**Cardinality** | (1,n)
+**Required** | Yes, always
+**Accepted Values** | Array of Objects
+**Usage Notes** | Array where every object is used to link to another resource where the nature of the relationship is known but does not match one of the standard [DCTERMS](https://www.w3.org/TR/vocab-dcat/#bib-dcterms) properties ([dct:hasPart](https://dublincore.org/specifications/dublin-core/dcmi-terms/#hasPart), [dct:isPartOf](https://dublincore.org/specifications/dublin-core/dcmi-terms/#isPartOf), [dct:conformsTo](https://dublincore.org/specifications/dublin-core/dcmi-terms/#conformsTo), [dct:isFormatOf](), [dct:hasFormat](), [dct:isVersionOf](), [dct:hasVersion](https://dublincore.org/specifications/dublin-core/dcmi-terms/#hasVersion), [dct:replaces](https://dublincore.org/specifications/dublin-core/dcmi-terms/#replaces), [dct:isReplacedBy](https://dublincore.org/specifications/dublin-core/dcmi-terms/#isReplacedBy), [dct:references](https://dublincore.org/specifications/dublin-core/dcmi-terms/#references), [dct:isReferencedBy](https://dublincore.org/specifications/dublin-core/dcmi-terms/#isReferencedBy), [dct:requires](https://dublincore.org/specifications/dublin-core/dcmi-terms/#requires), [dct:isRequiredBy](https://dublincore.org/specifications/dublin-core/dcmi-terms/#isRequiredBy)) or [PROV-O](https://www.w3.org/TR/vocab-dcat/#bib-prov-o) properties ([prov:wasDerivedFrom](https://www.w3.org/TR/prov-o/#wasDerivedFrom), [prov:wasInfluencedBy](https://www.w3.org/TR/prov-o/#wasInfluencedBy), [prov:wasQuotedFrom](https://www.w3.org/TR/prov-o/#wasQuotedFrom), [prov:wasRevisionOf](https://www.w3.org/TR/prov-o/#wasRevisionOf), [prov:hadPrimarySource](https://www.w3.org/TR/prov-o/#hadPrimarySource), [prov:alternateOf](https://www.w3.org/TR/prov-o/#alternateOf), [prov:specializationOf](https://www.w3.org/TR/prov-o/#specializationOf)). This DCAT property follows the common qualified relation pattern described in [Qualified relations](https://www.w3.org/TR/vocab-dcat/#qualified-forms). So `qualifiedRelation` should always contain both the resource's appropriately formatted title (`hadRole`) and role (`relation`).
+**Example** | See below
+
+~~~
+            "qualifiedRelation": [{
+                "hadRole": "custodian"
+                "relation": "my-resource"
+            }]
+~~~
+
+
+{: .table .table-striped .child-field #qualifiedRelation-hadRole}
+**Field [#](#qualifiedRelation-hadRole){: .permalink}** | **qualifiedRelation &rarr; hadRole**
+----- | -----
+**Cardinality** | (1,1)
+**Required** | Yes, always
+**Accepted Values** | String
+**Usage Notes** | The role as defined by [CI_RoleCode](https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml).
+**Example** | `{"hadRole": "custodian"}`
+
+{: .table .table-striped .child-field #qualifiedRelation-relation}
+**Field [#](#qualifiedRelation-relation){: .permalink}** | **qualifiedRelation &rarr; relation**
+----- | -----
+**Cardinality** | (1,1)
+**Required** | Yes, always
+**Accepted Values** | String
+**Usage Notes** | In the context of a [dcat:Relationship](https://www.w3.org/TR/vocab-dcat-3/#Class:Relationship) this is expected to point to another [dcat:Dataset](https://www.w3.org/TR/vocab-dcat-3/#Class:Dataset) or other cataloged resource.
+**Example** | `{"relation": "my-resource"}`
+
 {: .table .table-striped #contactPoint}
 **Field [#](#contactPoint){: .permalink}** | **contactPoint**
 ----- | -----
@@ -455,6 +498,41 @@ Dataset Fields {#Dataset}
 **Accepted Values** | String (URL)
 **Usage Notes** | This should be the URL for an indirect means of accessing the data, such as [API documentation](../api/), a 'wizard' or other graphical interface which is used to generate a download, feed, or a request form for the data. When accessLevel is "restricted" but the dataset is available online indirectly, this field should be the URL that provides indirect access. This should not be a **direct** download URL.  It is usually assumed that accessURL is an HTML webpage.  
 **Example** |  `{"accessURL":"http://www.agency.gov/api/vegetables/"}`
+
+{: .table .table-striped .child-field #distribution-qualifiedRelation}
+**Field [#](#distribution-qualifiedRelation){: .permalink}** | **distribution &rarr; qualifiedRelation**
+----- | -----
+**Cardinality** | (0,n)
+**Required** | Yes, always
+**Accepted Values** | Array of Objects
+**Usage Notes** | Array where every object is used to link to another resource where the nature of the relationship is known but does not match one of the standard [DCTERMS](https://www.w3.org/TR/vocab-dcat/#bib-dcterms) properties ([dct:hasPart](https://dublincore.org/specifications/dublin-core/dcmi-terms/#hasPart), [dct:isPartOf](https://dublincore.org/specifications/dublin-core/dcmi-terms/#isPartOf), [dct:conformsTo](https://dublincore.org/specifications/dublin-core/dcmi-terms/#conformsTo), [dct:isFormatOf](), [dct:hasFormat](), [dct:isVersionOf](), [dct:hasVersion](https://dublincore.org/specifications/dublin-core/dcmi-terms/#hasVersion), [dct:replaces](https://dublincore.org/specifications/dublin-core/dcmi-terms/#replaces), [dct:isReplacedBy](https://dublincore.org/specifications/dublin-core/dcmi-terms/#isReplacedBy), [dct:references](https://dublincore.org/specifications/dublin-core/dcmi-terms/#references), [dct:isReferencedBy](https://dublincore.org/specifications/dublin-core/dcmi-terms/#isReferencedBy), [dct:requires](https://dublincore.org/specifications/dublin-core/dcmi-terms/#requires), [dct:isRequiredBy](https://dublincore.org/specifications/dublin-core/dcmi-terms/#isRequiredBy)) or [PROV-O](https://www.w3.org/TR/vocab-dcat/#bib-prov-o) properties ([prov:wasDerivedFrom](https://www.w3.org/TR/prov-o/#wasDerivedFrom), [prov:wasInfluencedBy](https://www.w3.org/TR/prov-o/#wasInfluencedBy), [prov:wasQuotedFrom](https://www.w3.org/TR/prov-o/#wasQuotedFrom), [prov:wasRevisionOf](https://www.w3.org/TR/prov-o/#wasRevisionOf), [prov:hadPrimarySource](https://www.w3.org/TR/prov-o/#hadPrimarySource), [prov:alternateOf](https://www.w3.org/TR/prov-o/#alternateOf), [prov:specializationOf](https://www.w3.org/TR/prov-o/#specializationOf)). This DCAT property follows the common qualified relation pattern described in [Qualified relations](https://www.w3.org/TR/vocab-dcat/#qualified-forms). So `qualifiedRelation` should always contain both the resource's appropriately formatted title (`hadRole`) and role (`relation`).
+**Example** | See below
+
+~~~
+            "qualifiedRelation": [{
+                "hadRole": "custodian"
+                "relation": "my-resource"
+            }]
+~~~
+
+
+{: .table .table-striped .child-field #distribution-qualifiedRelation-hadRole}
+**Field [#](#distribution-qualifiedRelation-hadRole){: .permalink}** | **distribution &rarr; qualifiedRelation &rarr; hadRole**
+----- | -----
+**Cardinality** | (1,1)
+**Required** | Yes, always
+**Accepted Values** | String
+**Usage Notes** | The role as defined by [CI_RoleCode](https://standards.iso.org/iso/19115/resources/Codelists/gml/CI_RoleCode.xml).
+**Example** | `{"hadRole": "custodian"}`
+
+{: .table .table-striped .child-field #distribution-qualifiedRelation-relation}
+**Field [#](#distribution-qualifiedRelation-relation){: .permalink}** | **distribution &rarr; qualifiedRelation &rarr; relation**
+----- | -----
+**Cardinality** | (1,1)
+**Required** | Yes, always
+**Accepted Values** | String
+**Usage Notes** | In the context of a [dcat:Relationship](https://www.w3.org/TR/vocab-dcat-3/#Class:Relationship) this is expected to point to another [dcat:Dataset](https://www.w3.org/TR/vocab-dcat-3/#Class:Dataset) or other cataloged resource.
+**Example** | `{"relation": "my-resource"}`
 
 {: .table .table-striped .child-field #distribution-conformsTo}
 **Field [#](#distribution-conformsTo){: .permalink}** | **distribution &rarr; conformsTo**
