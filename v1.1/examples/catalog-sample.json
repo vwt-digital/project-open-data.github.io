@@ -14,12 +14,24 @@
         "hasEmail": "mailto:jane.doe@agency.gov"
       },
       "description": "This dataset provides national statistics on the production of widgets",
+      "qualifiedRelation": [
+        {
+          "hadRole": "owner",
+          "relation": "project-name"
+        }
+      ],
       "distribution": [
         {
           "accessURL": "https://console.cloud.google.com/storage/browser/my-bucket",
           "format": "blob-storage",
           "mediaType": "text/csv",
-          "title": "my-bucket"
+          "title": "my-bucket",
+          "qualifiedRelation": [
+            {
+              "hadRole": "custodian",
+              "relation": "project-name"
+            }
+          ]
         }
       ],
       "identifier": "http://dx.doi.org/10.7927/H45X26V8",
