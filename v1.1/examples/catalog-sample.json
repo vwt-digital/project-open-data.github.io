@@ -31,7 +31,10 @@
               "hadRole": "custodian",
               "relation": "project-name"
             }
-          ]
+          ],
+          "lifespan": {
+            "startDate": "2020-06-02"
+          }
         }
       ],
       "identifier": "http://dx.doi.org/10.7927/H45X26V8",
