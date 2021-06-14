@@ -120,6 +120,7 @@ Field                                           | Label                 | Defini
 [deploymentProperties](#distribution-deploymentProperties)  | Deployment properties       | Additional platform specific properties to specify deployment details (e.g. instance details like sizing and location on a database) | No
 [mediaType](#distribution-mediaType)            | Media Type            | The machine-readable file format ([IANA Media Type](http://www.iana.org/assignments/media-types) or [MIME Type](http://en.wikipedia.org/wiki/Internet_media_type)) of the distribution's `downloadURL`. | If-Applicable   
 [title](#distribution-title)                    | Title                 | Human-readable name of the distribution, also defines name of resource for [GCP deployment](../gcp-templates). | No
+[lifespan](#distribution-lifespan)              | Lifespan              | An interval of time that is named or defined by its start and end. It is of class [PeriodOfTime](https://www.w3.org/TR/vocab-dcat/#Class:Period_of_Time) | If-Applicable
                                                                                                                       
 
 odlrPolicy Fields
@@ -191,6 +192,11 @@ Additional details for each field are provided here broken down into sections fo
             * {: .field-optional}[deploymentProperties](#distribution-deploymentProperties)
             * {: .field-required-if-applicable}[mediaType](#distribution-mediaType)
             * {: .field-optional}[title](#distribution-title)
+            * {: .field-required-if-applicable}[lifespan](#distribution-lifespan)
+                * {: .field-required-if-applicable}[startDate](#lifespan-startDate)
+                * {: .field-required-if-applicable}[endDate](#lifespan-endDate)
+                * {: .field-required-if-applicable}[hasBeginning](#lifespan-hasBeginning)
+                * {: .field-required-if-applicable}[hasEnd](#lifespan-hasEnd)
         * {: .field-required}[identifier](#identifier)
         * {: .field-optional}[isPartOf](#isPartOf)
         * {: .field-optional}[issued](#issued)
@@ -623,6 +629,27 @@ Dataset Fields {#Dataset}
 **Accepted Values** | String
 **Usage Notes** | This should be a useful title for the distribution.  Acronyms should be avoided. This field is used to determine the name of the resource when using [GCP templates](../../gcp-templates/).
 **Example**     | `{"title":"listofvegetables.csv"}`
+
+{: .table .table-striped .child-field #distribution-lifespan}
+**Field [#](#distribution-lifespan){: .permalink}** | **distribution &rarr; lifespan**
+----- | -----
+**Cardinality** | (0,2)
+**Required** | Yes, if there is a start date to the distribution
+**Accepted Values** | Object
+**Usage Notes** | An interval of time that is named or defined by its start and end. The start and end of the interval should be given by using properties [dcat:startDate](https://www.w3.org/TR/vocab-dcat/#Property:period_start_date) or [time:hasBeginning](https://www.w3.org/TR/vocab-dcat/#Property:period_has_beginning), and [dcat:endDate](https://www.w3.org/TR/vocab-dcat/#Property:period_end_date) or [time:hasEnd](https://www.w3.org/TR/vocab-dcat/#Property:period_has_end), respectively. The interval can also be open - i.e., it can have just a start or just an end.
+**Example** | See below
+
+~~~
+            "lifespan": {
+                "startDate": "2020-06-02"
+                "endDate": "2021-06-02"
+            }
+~~~
+~~~
+            "lifespan": {
+                "hasBeginning": "2020-06-02"
+            }
+~~~
 
 
 {: .table .table-striped #identifier}
